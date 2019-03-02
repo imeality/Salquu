@@ -1,0 +1,55 @@
+
+    //     app.post("/api/login",function(req,res){
+          
+           
+    //         var user=req.body[0].username;
+         
+    //         var pass=req.body[1].password;
+
+    //         console.log("------------------"+user);
+    //         connection.connect(function(err){
+    //         var sql='select * from login where email="'+user+'" and password="'+pass+'"';
+            
+    //         connection.query(sql, function(error, results){
+    //             if ( error ){
+    //                 res.status(400).send('Error in database operation');
+    //             } else {
+                   
+    //                var token = jwt.sign({user:user},config.secret,{expires: '2h'});
+                  
+    //                //res.send({results:results});
+    //                 console.log(token);
+    //                res.status(200).json({
+    //                 success: true,
+    //                 message: 'Authentication successful!',
+    //                 token: token
+    //               });
+                 
+    //             }
+    //         });
+           
+    //     });
+    
+    //  });
+         //register record------------------
+
+        //  app.post("/api/register",function( req, res){
+        //        var firstName = req.body[0].firstName;
+        //        var lastName = req.body[1].lastName;
+        //        var email = req.body[2].email;
+        //        var password = req.body[3].password;
+
+
+
+            //    console.log(firstName);
+            //    var sql2='insert into registration(fname,lname,email,password) values("'+firstName+'","'+lastName+'","'+email+'","'+password+'")';
+
+            //    connection.query(sql2, function(error){
+            //        if(error){
+            //           res.status(400).send('Error in database');
+            //        }else{
+            //            res.json({fname: firstName});
+            //        }
+            //    })
+      //  });
+        
