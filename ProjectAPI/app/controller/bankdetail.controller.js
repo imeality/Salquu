@@ -32,8 +32,9 @@ exports.findAll =(req,res)=>{
  //------findBy Id---------
 
 
-exports.findById=(req,res)=>{
-    Bankdetail.findById(req.params.empId).then(bankdetail=>{
+exports.findByempId=(req,res)=>{
+    Bankdetail.findAll({where:{empId:req.params.empId}
+    }).then(bankdetail=>{
         res.send(bankdetail);
     }).catch(err=>{
         res.send("error"+err);

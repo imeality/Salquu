@@ -1,6 +1,6 @@
 
 const env = {
-    database: 'employee',
+    database: 'employees',
     username: 'imeality',
     password: 'imeality',
     host: 'localhost',

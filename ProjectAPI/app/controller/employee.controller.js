@@ -4,6 +4,24 @@ const Employee = db.employees;
 
 //-----create employees-----------
 
+
+function isEmailUnique (empEmail) {
+    return db.employees.count({ where: { empEmail: empEmail } })
+      .then(count => {
+        if (count != 0) {
+          return false;
+        }
+        return true;
+    });
+}
+
+
+
+ 
+
+
+   
+
 exports.create=(req,res)=>{
     Employee.create({
         firstName:req.body.firstName,
@@ -26,7 +44,17 @@ exports.create=(req,res)=>{
         empImage:req.body.empImage,
         permission:req.body.permission
     }).then(employee =>{
-        res.send(employee); 
+        isEmailUnique(this.empEmail).then(isUnique => {
+            if (isUnique) {
+                
+                return res.send(employee);
+               
+            }
+            else{
+                return res.send("email already register");
+               
+            }
+        });
     }).catch(err=>{
         res.status(500).send("error"+err);
     })

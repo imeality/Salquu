@@ -17,7 +17,7 @@ module.exports = (sequelize,Sequelize)=>{
             type:Sequelize.STRING(20)
         },
         empEmail:{
-            type:Sequelize.STRING(20)
+            type:Sequelize.STRING(30)
         },
         password:{
             type:Sequelize.STRING(55)
