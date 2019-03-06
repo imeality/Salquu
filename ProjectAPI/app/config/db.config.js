@@ -24,5 +24,9 @@ db.bank_details = require('../model/bankdetail.model')(sequelize,Sequelize);
 db.leaveRequest = require('../model/leaveRequest.model')(sequelize,Sequelize);
 db.experience = require('../model/experience.model')(sequelize,Sequelize);
 db.mailHistory = require('../model/mailHistory.model')(sequelize,Sequelize);
+db.project = require('../model/project.model')(sequelize,Sequelize);
+db.qualification = require('../model/qualification.model')(sequelize,Sequelize);
+db.task = require('../model/task.model')(sequelize,Sequelize);
+//db.login = require('../model/login.model')(sequelize,Sequelize);
 
 module.exports = db;

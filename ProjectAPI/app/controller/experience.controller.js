@@ -14,9 +14,9 @@ exports.create = (req,res)=>{
         employer_leave_date:req.body.employer_leave_date,
         employer_salary:req.body.employer_salary
     }).then(experience=>{
-        req.send(experience);
+        return req.send(experience);
     }).catch(err=>{
-        res.status(500).send("error"+err);
+        return res.status(500).send("error"+err);
     })
 };
 

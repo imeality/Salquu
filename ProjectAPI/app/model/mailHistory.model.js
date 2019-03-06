@@ -16,6 +16,7 @@ module.exports = (sequelize,Sequelize)=>{
         description:{
             type:Sequelize.TEXT
         }
+    },{ freezeTableName:true
     });
     return MailHistory;
 }

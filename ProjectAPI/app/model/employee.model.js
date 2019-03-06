@@ -58,9 +58,10 @@ module.exports = (sequelize,Sequelize)=>{
         permission:{
             type:Sequelize.STRING(10)
         },
-
+    
         
 
+    },{ freezeTableName:true
     });
     return Employee;
 }

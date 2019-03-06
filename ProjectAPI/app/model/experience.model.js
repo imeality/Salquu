@@ -22,6 +22,7 @@ module.exports = (sequelize,Sequelize)=>{
         employer_salary:{
             type:Sequelize.INTEGER
         }
+    },{ freezeTableName:true
     })
     return Experience;
 }

@@ -12,6 +12,9 @@ module.exports = (sequelize,Sequelize)=>{
         bankName:{
             type:Sequelize.STRING
         }
-    });
+    },{
+        freezeTableName:true
+    }
+    );
     return BankDetails;
 }
