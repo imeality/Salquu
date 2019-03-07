@@ -32,7 +32,10 @@ require('./app/routes/mailHistory.routes')(app);
 require('./app/routes/project.routes')(app);
 require('./app/routes/qualification.routes')(app);
 require('./app/routes/task.routes')(app);
-require('./app/routes/login.routes');
+require('./app/routes/login.routes')(app);
+require('./app/routes/workSchedule.routes')(app);
+require('./app/routes/leaveType.routes')(app);
+
 
 // Create a Server
 var server = app.listen(8080, function () {

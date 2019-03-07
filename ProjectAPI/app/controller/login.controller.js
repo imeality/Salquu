@@ -1,74 +1,80 @@
+var db = require('../config/db.config');
 const jwt = require('jsonwebtoken');
-const config = require('../config');
-const db = require('../config/db.config');
-const User = require('../model/employee.model');
+const config =require('../config');
+let date = require('date-and-time');
+const Login = db.employees;
+const userlog = db.userlog;
+//----find One-
 
-// The authentication controller.
-const AuthController = {};
 
-// get user.
-AuthController.getUserByJwt = (req, res) => {
-    if (req.headers && req.headers.authorization) {
-      const token = req.headers['authorization'].replace(/^JWT\s/, '');
-      let decoded;
-      decoded = jwt.verify(token, config.keys.secret);
-  
-      console.log(decoded.username);
-      // Fetch the user by id 
-      User.findOne({_username: decoded.username}).then(function(user){
-          // Do something with the user
-          res.status(200).json({
-            user
-          });
-      });
-  }
-  };
-  
-  // Authenticate a user.
-  AuthController.authenticateUser = (req, res) => {
-    if (!req.body.username || !req.body.password) {
-      res.status(404).json({
-        message: 'username and password are needed!',
-      });
-    } else {
-      const username = req.body.username;
-      const password = req.body.password;
-      const potentialUser = {
-        where: {
-          username,
-        },
-      };
-      User.findOne(potentialUser).then((user) => {
-        if (!user) {
-          res.status(404).json({
-            message: 'Authentication failed!',
-          });
-        } else {
-          user.comparePasswords(password, (error, isMatch) => {
-            if (isMatch && !error) {
-              const token = jwt.sign({
-                username: user.username,
-              },
-              config.keys.secret, {
-                expiresIn: '300m',
-              },
-              );
-              res.json({
-                success: true,
-                token: `JWT ${token}`,
-                role: user.role,
-              });
-            } else {
-              res.status(404).json({
-                message: 'Login failed!',
-              });
-            }
-          });
+//--------function for check valid mail and password-----
+function isValid (empEmail,password) {
+    return db.employees.count({ where: { empEmail: empEmail,password:password } })
+      .then(count => {
+        if (count == 0) {
+          return false;
         }
-      }).catch(() => {
-        res.status(500).json({
-          message: 'There was an error!',
-        });
-      });
-    }
-  };
+       
+        return true;
+    });
+}
+
+
+//-----function for insert login and logout time-------
+
+function logtime(id){
+    
+        var d =new Date();
+        
+        var time = date.format(d,'hh:mm:ss');
+        var currentdate = d.toISOString().slice(0,10);
+   
+       userlog.create({
+              empId:id,
+              loginDate:currentdate,
+              loginTime:time,
+              status:"Active"
+       }).then(userlog=>{
+            console.log(userlog);
+          
+       }).catch(err=>{
+             console.log(err);
+       })
+ 
+}
+
+
+
+
+//-------employee login with insert login time ,date and token generated
+exports.findOne=(req,res)=>{
+
+    var empEmail=req.body.empEmail;
+    var password = req.body.password
+    isValid(empEmail,password).then(isValid => {
+        if (isValid) {
+            var token = jwt.sign({empEmail:empEmail},config.secret,{expiresIn: '5h'});
+            
+            Login.findOne().then(login=>{
+               
+                var id=login.id;
+                logtime(id);
+              
+                return res.json(
+                    {login:login,
+                    "token":token,
+                     id:id});
+            })
+           
+        }
+        else{
+            return res.send("login failed");
+           
+        }
+    })
+    .catch(err=>{
+        res.status(500).send("error"+err);
+    })
+
+};
+

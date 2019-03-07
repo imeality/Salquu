@@ -1,6 +1,6 @@
 module.exports = function(app)
 {
-    const authController = require('../controller/login.controller');
+    const login = require('../controller/login.controller');
 
-    app.post('/api/login', authController.authenticateUser);
+    app.post('/api/login', login.findOne);
 }

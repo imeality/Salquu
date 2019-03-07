@@ -19,7 +19,10 @@ module.exports = (sequelize,Sequelize)=>{
         },
         reason:{
             type:Sequelize.TEXT
-        }
+        },
+        status:{
+            type:Sequelize.STRING
+        },
     },{ freezeTableName:true
     })
     return leaveRequest;

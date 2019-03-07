@@ -27,6 +27,9 @@ db.mailHistory = require('../model/mailHistory.model')(sequelize,Sequelize);
 db.project = require('../model/project.model')(sequelize,Sequelize);
 db.qualification = require('../model/qualification.model')(sequelize,Sequelize);
 db.task = require('../model/task.model')(sequelize,Sequelize);
-//db.login = require('../model/login.model')(sequelize,Sequelize);
+db.userlog = require('../model/userlog.model')(sequelize,Sequelize);
+db.workSchedule = require('../model/workSchedule.model')(sequelize,Sequelize);
+db.leaveType = require('../model/leaveType.model')(sequelize,Sequelize);
+db.leavebalance = require('../model/leaveBalance.model')(sequelize,Sequelize);
 
 module.exports = db;
