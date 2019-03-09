@@ -4,7 +4,7 @@ const leaveRequest = db.leaveRequest;
 const leaveBalance = db.leavebalance;
 //---cretae leave request----
 
-//----function for manage leave balance---
+//----function for insert data in leave  balance---
 
 function leaveBal(empId,leave_type,update_date,start_date,TotalNumberOfLeaves){
      
@@ -26,6 +26,32 @@ function leaveBal(empId,leave_type,update_date,start_date,TotalNumberOfLeaves){
 }
 
 
+//----function leave date time manage and calculate employee leave
+
+function leaveManage(){
+    var d = new Date();
+
+    var update_date = d.toISOString().slice(0,10);
+    var TotalNumberOfLeaves=30;
+    var empId = leaveRequest.empId;
+    var leave_type = leaveRequest.leave_type;
+    var start_date=leaveRequest.leave_start_date;
+    var end_date = leaveRequest.leave_end_date;
+
+    var date1 =new Date(start_date);
+    var date2 = new Date(end_date);
+    var diff= Math.abs(date2.getTime(end_date)-date1.getTime(start_date));
+    var diffDays = Math.ceil(diff / (1000 * 3600 * 24)); 
+
+    
+
+    TotalNumberOfLeaves = TotalNumberOfLeaves-diffDays;
+
+    leaveBal(empId,leave_type,update_date,start_date,TotalNumberOfLeaves);
+
+
+}
+
 
 exports.create = (req,res)=>{
    
@@ -39,28 +65,7 @@ exports.create = (req,res)=>{
         status:"Pendding"
     }).then(leaveRequest=>{
 
-        var d = new Date();
-
-        var update_date = d.toISOString().slice(0,10);
-        var TotalNumberOfLeaves=30;
-        var empId = leaveRequest.empId;
-        var leave_type = leaveRequest.leave_type;
-        var start_date=leaveRequest.leave_start_date;
-        var end_date = leaveRequest.leave_end_date;
-
-        var date1 =new Date(start_date);
-        var date2 = new Date(end_date);
-        var diff= Math.abs(date2.getTime(end_date)-date1.getTime(start_date));
-        var diffDays = Math.ceil(diff / (1000 * 3600 * 24)); 
-    
-        
-
-        TotalNumberOfLeaves = TotalNumberOfLeaves-diffDays;
-
-        leaveBal(empId,leave_type,update_date,start_date,TotalNumberOfLeaves);
-
-
-       return res.send(leaveRequest+"diff"+TotalNumberOfLeaves);
+        return res.send(leaveRequest);
     }).catch(err=>{
         return res.status(500).send("error"+err);
     })

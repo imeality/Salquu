@@ -23,7 +23,8 @@ module.exports = (sequelize,Sequelize)=>{
         status:{
             type:Sequelize.STRING
         },
-    },{ freezeTableName:true
+    },{ freezeTableName:true,
+        timestamps: false,
     })
     return leaveRequest;
 }
