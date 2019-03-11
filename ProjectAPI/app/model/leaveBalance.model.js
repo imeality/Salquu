@@ -17,7 +17,8 @@ module.exports = (sequelize,Sequelize)=>{
             type:Sequelize.INTEGER
         }
     },{
-        freezTableName:true
+        freezTableName:true,
+        timestamps: false,
     });
 
     return LeaveBalance;

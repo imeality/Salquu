@@ -26,7 +26,8 @@ module.exports = (sequelize,Sequelize)=>{
             type:Sequelize.STRING
            
         },
-    },{ freezeTableName:true
+    },{ freezeTableName:true,
+        timestamps: false,
     });
     return Event;
 }

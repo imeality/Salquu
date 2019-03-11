@@ -7,4 +7,6 @@ module.exports = function(app){
      app.get('/api/leaveRequests',leaveRequest.findAll);
 
      app.get('/api/leaveRequest/:empId',leaveRequest.findByempId);
+
+     app.put('/api/leaveRequest/:empId',leaveRequest.update);
 }

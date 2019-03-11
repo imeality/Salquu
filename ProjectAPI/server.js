@@ -4,9 +4,14 @@ var app = express();
 var login =require('./app/routes/login.routes');
 require('dotenv').config();
 var bodyParser = require('body-parser');
+
 app.use(bodyParser.json())
  
 const cors = require('cors')
+
+
+
+
 const corsOptions = {
   origin: 'http://localhost:4200',
   optionsSuccessStatus: 200
