@@ -40,6 +40,8 @@ require('./app/routes/task.routes')(app);
 require('./app/routes/login.routes')(app);
 require('./app/routes/workSchedule.routes')(app);
 require('./app/routes/leaveType.routes')(app);
+require('./app/routes/employee_daily_work_schedule.routes')(app);
+//require('./app/routes/searchProject.routes')(app);
 
 
 // Create a Server

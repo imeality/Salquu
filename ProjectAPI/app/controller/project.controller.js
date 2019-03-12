@@ -1,5 +1,6 @@
 var db = require('../config/db.config');
-
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 const Project = db.project;
 
 //-----create project-----
@@ -61,4 +62,35 @@ exports.findAll =(req,res)=>{
     }).catch(err=>{
         return res.send("error"+err);
     })
+}
+
+
+//----search project----
+
+exports.findByProjectName = (req,res)=>{
+   
+    Project.findAll({ where: {[Op.or]:[ {
+         project_name: { 
+                [Op.like]: '%'+req.body.project_name+'%'
+            }
+        },
+             { project_desc: {
+                                [Op.like]: '%'+req.body.project_name+'%'
+                                }
+                            },
+                            {
+                                project_start_date:{
+                                    [Op.like]:'%'+req.body.project_name+'%'
+                                }
+                            }
+                        ]}
+            }
+   ).then(project=>{
+    //   for(var i=0;i<project.length;i++){
+    //      console.log(project[i].project_name);
+    //   }
+      return res.send(project);
+  }).catch(err=>{
+      return res.send("errrrror"+err);
+  })
 }

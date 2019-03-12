@@ -31,5 +31,5 @@ db.userlog = require('../model/userlog.model')(sequelize,Sequelize);
 db.workSchedule = require('../model/workSchedule.model')(sequelize,Sequelize);
 db.leaveType = require('../model/leaveType.model')(sequelize,Sequelize);
 db.leavebalance = require('../model/leaveBalance.model')(sequelize,Sequelize);
-
+db.empTracker = require('../model/employee_daily_work_schedule.model')(sequelize,Sequelize);
 module.exports = db;

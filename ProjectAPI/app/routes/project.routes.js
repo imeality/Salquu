@@ -8,4 +8,6 @@ module.exports = function(app){
       app.get('/api/project/:id',project.findById);
 
       app.put('/api/project/:id',project.update);
+
+      app.get('/api/searchProject',project.findByProjectName);
 }
