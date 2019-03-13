@@ -1,10 +1,11 @@
 var express= require('express');
 var bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
+
 var app = express();
 const cors= require('cors');
 //let config = require('./config');
-
+const Timer = require('tiny-timer');
 var sql = require("./config.db");
 let employee = require('./routes/employee.routes');
 let hr = require('./routes/hr.routes');
@@ -21,8 +22,7 @@ app.use(bodyParser.urlencoded({extended:true}));
      app.use('/hr',hr); 
      app.use('/admin',admin);
 
-
-
+    
 
   //-----------get qualification information api-----------------------
 

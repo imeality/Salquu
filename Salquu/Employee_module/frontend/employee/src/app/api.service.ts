@@ -26,4 +26,11 @@ export class ApiService {
        return this.httpclient.get('http://127.0.0.1:2000/hr/events').pipe(
         map(this.extractData));
   }
+  clockIn(){
+    return this.httpclient.get('http://127.0.0.1:8080/api/empTracker');
+  }
+
+  clockOut(){
+    return this.httpclient.get('http://127.0.0.1:8080/api/empTrackerstop');
+  }
 }

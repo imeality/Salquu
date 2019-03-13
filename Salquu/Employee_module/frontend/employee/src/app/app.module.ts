@@ -14,6 +14,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FullCalendarModule } from 'ng-fullcalendar';
 import { CalendarpageComponent } from './calendarpage/calendarpage.component';
+import { ProjectSearchComponent } from './project-search/project-search.component';
 
 
 
@@ -30,6 +31,8 @@ import { CalendarpageComponent } from './calendarpage/calendarpage.component';
     SidebarComponent,
     
     CalendarpageComponent,
+    
+    ProjectSearchComponent,
 
   ],
   imports: [
