@@ -1,11 +1,20 @@
+var express= require('express');
+var bodyParser = require('body-parser');
 var db = require('../config/db.config');
 const jwt = require('jsonwebtoken');
 const config =require('../config');
 let date = require('date-and-time');
 const Login = db.employees;
+var app = express();
+const cors = require('cors');
+
 const userlog = db.userlog;
+
 //----find One-
 
+app.use(cors());
+app.use(bodyParser());
+app.use(bodyParser.urlencoded({extended:true}));
 
 //--------function for check valid mail and password-----
 function isValid (empEmail,password) {
@@ -49,21 +58,25 @@ function logtime(id){
 //-------employee login with insert login time ,date and token generated
 exports.findOne=(req,res)=>{
 
-    var empEmail=req.body.empEmail;
-    var password = req.body.password
+   
+    var username = req.body[0].username;
+    console.log(req.body);
+    var password = req.body[1].password
+    console.log(password);
     isValid(empEmail,password).then(isValid => {
         if (isValid) {
-            var token = jwt.sign({empEmail:empEmail},config.secret,{expiresIn: '5h'});
+            var token = jwt.sign({empEmail:username},config.secret,{expiresIn: '5h'});
             
             Login.findOne().then(login=>{
                
                 var id=login.id;
                 logtime(id);
-              
+                
                 return res.json(
                     {login:login,
                     "token":token,
                      id:id});
+
             })
            
         }

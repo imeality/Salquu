@@ -6,6 +6,7 @@ import {ClockComponent } from './clock/clock.component';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {CalendarpageComponent} from './calendarpage/calendarpage.component';
 import {ProjectSearchComponent} from './project-search/project-search.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: '' , component:LoginComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'clock', component:ClockComponent},
   {path: 'sidebar',component:SidebarComponent},
   {path: 'calendar', component:CalendarpageComponent},
-  {path: 'projectSearch' , component:ProjectSearchComponent }
+  {path: 'projectSearch' , component:ProjectSearchComponent },
+  {path: 'dashboard' , component:DashboardComponent}
 ];
 
 @NgModule({

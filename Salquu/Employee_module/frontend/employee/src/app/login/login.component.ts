@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-
+import { FormBuilder, Validators, FormGroup, NgForm } from '@angular/forms';
+import {MatDialog} from '@angular/material'
+import {Router} from '@angular/router';
 import {ApiService} from '../api.service';
 
 @Component({
@@ -13,9 +14,11 @@ export class LoginComponent implements OnInit {
   model:any[];
   submitted =false;
 
+  // empMail: string;
+  // password: string;
   
 
-  constructor( private formBuilder:FormBuilder,private api:ApiService) { }
+  constructor( private formBuilder:FormBuilder,private api:ApiService,private router: Router) { }
   
 
   ngOnInit() {
@@ -29,16 +32,16 @@ export class LoginComponent implements OnInit {
      return this.loginform.controls;
    }
 
-   onSubmit(){
-     this.submitted = true;
+   onSubmit(form:NgForm){
+     //this.submitted = true;
 
-     this.model=[{username: this.f.username.value},
-      {password: this.f.password.value}]
+     this.model=[{username: this.f.username},
+      {password: this.f.password}]
     
-         console.log(this.model);
+         console.log(form);
        this.api.getLogin(this.model)
         .subscribe(result => {
-                    console.log(result);
+                   this.router.navigate(["dashboard"]);
 
                  
          },
@@ -52,6 +55,9 @@ export class LoginComponent implements OnInit {
          
           }
           );
+      
+       
+      
         
        
     

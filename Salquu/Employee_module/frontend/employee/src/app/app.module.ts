@@ -15,7 +15,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FullCalendarModule } from 'ng-fullcalendar';
 import { CalendarpageComponent } from './calendarpage/calendarpage.component';
 import { ProjectSearchComponent } from './project-search/project-search.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule,MatCardModule,MatProgressSpinnerModule } from '@angular/material';
 
 
 
@@ -41,7 +42,14 @@ import { ProjectSearchComponent } from './project-search/project-search.componen
     FormsModule,
     ReactiveFormsModule,
     FullCalendarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatInputModule, 
+    MatButtonModule,
+    MatSelectModule,
+    MatIconModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    BrowserAnimationsModule
   ],
   
   providers: [ApiService,{ provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },

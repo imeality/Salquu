@@ -33,3 +33,13 @@
     .btn:hover {
     opacity: 1;
     }
+
+    /* new login form */
+
+    .mat-form-field-infix{
+        display: block;
+        position: relative;
+        flex: auto;
+        min-width: 0px;
+        width: 350px;
+    }

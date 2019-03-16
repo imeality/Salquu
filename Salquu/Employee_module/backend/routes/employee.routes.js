@@ -6,7 +6,7 @@ const cors= require('cors');
 let config = require('../config');
 let middleware = require('../middleware');
 var sql = require("../config.db");
-var router = express.Router();
+
 let date = require('date-and-time');
 
 app.use(cors());
