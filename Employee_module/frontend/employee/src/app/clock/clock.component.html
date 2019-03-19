@@ -1,0 +1,17 @@
+<!--<div>
+
+  <div>
+    Time:
+    <span id="spnClockInTime">00:{{minute}}:{{counter}}</span>
+  </div>
+  <button (click)="start()">Check In</button>
+  <button (click)="stop()">Stop</button>
+  
+</div>-->
+
+<div id="punchActivity" class="punchActivity">
+  <ul id="punchActions" class="punchButton">
+    <li><input type="button" class="punchButton clockIn" value="Clock In" (click)="startTracker()"></li>
+    <li><input type="button" class="punchButton break" value="Stop" (click)="stopTracker()"></li>
+  </ul>
+</div>
