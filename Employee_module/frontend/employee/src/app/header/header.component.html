@@ -1,4 +1,11 @@
 <div class="header">
-    
+   <h6>Welcome:</h6>
+   {{data.firstName}}
+   {{data.lastName}}
+   {{data.id}}
+   <div class="timer">
+   <input type="button" class="btn btn-success" value="Clock In" (click)="startTracker()">
+   <input type="button" class="btn btn-danger" value="Stop" (click)="stopTracker()">
+  </div>
   <a (click)="logout()">Logout</a>
 </div>

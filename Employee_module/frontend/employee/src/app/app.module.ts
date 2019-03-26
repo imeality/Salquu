@@ -22,6 +22,7 @@ import { HeaderComponent } from './header/header.component';
 import { MaterialDashboardComponent } from './material-dashboard/material-dashboard.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FooterComponent } from './footer/footer.component';
+import { RequestFormComponent } from './request-form/request-form.component';
 
 
 
@@ -45,6 +46,8 @@ import { FooterComponent } from './footer/footer.component';
     MaterialDashboardComponent,
     
     FooterComponent,
+    
+    RequestFormComponent,
 
   ],
   imports: [

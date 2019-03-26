@@ -15,7 +15,7 @@ export class ApiService {
   constructor(private httpclient: HttpClient) { }
   getLogin(model:any){
     
-    return this.httpclient.post<{token:string}>('http://127.0.0.1:8080/api/login',model);
+    return this.httpclient.post<{token:string,data:any}>('http://127.0.0.1:8080/api/login',model);
   }
 
   registration(model:any){

@@ -43,9 +43,11 @@ export class LoginComponent implements OnInit {
        this.api.getLogin(this.model)
 
         .subscribe(result => {
-             
+             //let data = [];
               localStorage.setItem('access_token', result.token);
-             // console.log(localStorage.getItem('access_token'));
+             // localStorage.setItem('data',result.data);
+             localStorage.setItem('data', JSON.stringify(result.data))
+              
                   this.router.navigate(["dashboard"]);
                 
                  

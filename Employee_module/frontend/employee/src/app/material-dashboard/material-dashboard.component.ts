@@ -35,8 +35,10 @@ export class MaterialDashboardComponent {
 
   ngOnInit() {
     
-           
+    
+        
     if(localStorage.getItem('access_token')!==null){
+     
       return true;
     
     }
