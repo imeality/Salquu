@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 var app = express();
 const cors= require('cors');
 let config = require('./config');
-
+var PDFImage = require("pdf-image").PDFImage;
 var sql = require("./config.db");
 
 
@@ -63,20 +63,36 @@ app.post("/api/login",function(req,res){
            var password = req.body.password;
            var mobile = req.body.mobile;
 
-
-
-        
            var sql2='insert into regis(firstname,lastname,email,password,mobile) values("'+firstName+'","'+lastName+'","'+email+'","'+password+'","'+mobile+'")';
 
-           sql.query(sql2, function(error){
+           sql.query(sql2, function(error,results){
                if(error){
                   return res.status(400).send('Error in database');
                }else{
                   
-                return res.status(200).json({fname: firstName});
+                return res.status(200).json({results: results});
                }
            })
    });
+
+   //-------------api for convert pdfr to image------
+
+   app.get(/(.*\.pdf)\/([0-9]+).jpg$/i, function (req, res) {
+    var pdfPath = req.params[0];
+    var pageNumber = req.params[1];
+ 
+  
+    var pdfImage = new PDFImage(pdfPath);
+ 
+    pdfImage.convertPage(pageNumber).then(function (imagePath) {
+       
+     return res.status(200).sendFile(imagePath);
+    }, function (err) {
+      console.log("asdasda");
+      return res.status(500).send(err);
+    });
+  });
+
 
 
  var server = app.listen(2000, function () {
