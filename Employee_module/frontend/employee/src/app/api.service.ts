@@ -37,4 +37,8 @@ export class ApiService {
   clockOut(){
     return this.httpclient.get('http://127.0.0.1:8080/api/empTrackerstop');
   }
+
+  request(model:any){
+       return this.httpclient.post('http://127.0.0.1:8080/api/leaveRequest',model);
+  }
 }

@@ -17,12 +17,16 @@ import { FullCalendarModule } from 'ng-fullcalendar';
 import { CalendarpageComponent } from './calendarpage/calendarpage.component';
 import { ProjectSearchComponent } from './project-search/project-search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule,MatCardModule,MatProgressSpinnerModule, MatGridListModule, MatMenuModule } from '@angular/material';
+import { MatInputModule, MatButtonModule,MatDatepickerModule,MatSelectModule, MatNativeDateModule, MatIconModule,MatCardModule,MatProgressSpinnerModule, MatGridListModule, MatMenuModule } from '@angular/material';
+//import {MatDatepickerModule} from '@angular/material/datepicker';
 import { HeaderComponent } from './header/header.component';
 import { MaterialDashboardComponent } from './material-dashboard/material-dashboard.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FooterComponent } from './footer/footer.component';
 import { RequestFormComponent } from './request-form/request-form.component';
+
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { ReportComponent } from './report/report.component';
 
 
 
@@ -48,7 +52,9 @@ import { RequestFormComponent } from './request-form/request-form.component';
     FooterComponent,
     
     RequestFormComponent,
-
+    
+    ReportComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -62,6 +68,8 @@ import { RequestFormComponent } from './request-form/request-form.component';
     MatSelectModule,
     MatIconModule,
     MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     RouterModule.forRoot([
       {path:'calendar',component:CalendarpageComponent}
     ]),
@@ -69,7 +77,8 @@ import { RequestFormComponent } from './request-form/request-form.component';
     BrowserAnimationsModule,
     MatGridListModule,
     MatMenuModule,
-    LayoutModule
+    LayoutModule,
+    Ng2GoogleChartsModule
   ],
   
   providers: [ApiService,{ provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
